@@ -1,32 +1,32 @@
-NAME		= so_long
+NAME        = so_long
 
 # Compiler
-CC			= cc
-CFLAGS		= -Wall -Wextra -Werror
-MLX_FLAGS	= -Lmlx -lmlx -lXext -lX11
+CC          = gcc
+CFLAGS      = -Wall -Wextra -Werror -g
+MLX_FLAGS   = -Lmlx_linux -lmlx_Linux -lXext -lX11 -lm
 
 # Sources
-SRC_DIR		= srcs
-SRCS		= main.c \
-			  map_validation.c \
-			  game_init.c \
-			  graphics.c \
-			  player_movement.c \
-			  utils.c
+SRC_DIR     = srcs
+SRCS        = main.c \
+              map_validation.c \
+              game_init.c \
+              graphics.c \
+              player_movement.c \
+              utils.c
 
 # Objects
-OBJ_DIR		= objs
-OBJS		= $(addprefix $(OBJ_DIR)/, $(SRCS:.c=.o))
+OBJ_DIR     = objs
+OBJS        = $(addprefix $(OBJ_DIR)/,$(SRCS:.c=.o))
 
 # Includes
-INC_DIR		= includes
-LIBFT_DIR	= libft
-MLX_DIR		= minilibx-linux
+INC_DIR     = includes
+LIBFT_DIR   = libft
+MLX_DIR     = mlx_linux
 
 # Colors
-GREEN		= \033[0;32m
-RED			= \033[0;31m
-NC			= \033[0m
+GREEN       = \033[0;32m
+RED         = \033[0;31m
+NC          = \033[0m
 
 # Rules
 all: $(NAME)
@@ -38,8 +38,8 @@ $(NAME): $(OBJS)
 	@echo "$(GREEN)Success: $(NAME) compiled$(NC)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR) -I$(MLX_DIR) -c $< -o $@
-
+	@$(CC) $(CFLAGS) -I$(INC_DIR) -Ilibft/inc -I$(MLX_DIR) -c $< -o $@
+	
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 
