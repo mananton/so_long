@@ -2,7 +2,7 @@ NAME        = so_long
 
 # Compiler
 CC          = gcc
-CFLAGS      = -Wall -Wextra -Werror -g
+CFLAGS      = -Wall -Wextra -Werror -g -O0
 MLX_FLAGS   = -Lmlx_linux -lmlx_Linux -lXext -lX11 -lm
 
 # Sources
@@ -39,7 +39,7 @@ $(NAME): $(OBJS)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) -I$(INC_DIR) -Ilibft/inc -I$(MLX_DIR) -c $< -o $@
-	
+
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 

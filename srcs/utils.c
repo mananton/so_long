@@ -1,9 +1,13 @@
 #include "so_long.h"
 #include "libft.h"
+#include <stdarg.h> 
 
-void    exit_error(char *message)
+void exit_error(const char *format, ...)
 {
-    ft_putstr_fd(message, 2);
+    va_list args;
+    va_start(args, format);
+    vfprintf(stderr, format, args);
+    va_end(args);
     exit(EXIT_FAILURE);
 }
 
@@ -11,29 +15,27 @@ int clean_exit(t_game *game)
 {
     int i;
 
-    // Free map memory
+    // Free map
     if (game->map)
     {
         i = 0;
-        while (i < game->map_height)
+        while (i < game->map_height && game->map[i])
             free(game->map[i++]);
         free(game->map);
     }
 
-    // Destroy textures (no NULL check needed for the array itself)
-    i = 0;
-    while (i < 5)
-    {
-        if (game->textures[i])
-            mlx_destroy_image(game->mlx, game->textures[i]);
-        i++;
-    }
-
-    // Destroy MLX window and connection
-    if (game->win)
-        mlx_destroy_window(game->mlx, game->win);
+    // Free textures
     if (game->mlx)
     {
+        i = 0;
+        while (i < 5)
+        {
+            if (game->textures[i])
+                mlx_destroy_image(game->mlx, game->textures[i]);
+            i++;
+        }
+        if (game->win)
+            mlx_destroy_window(game->mlx, game->win);
         mlx_destroy_display(game->mlx);
         free(game->mlx);
     }

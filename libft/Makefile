@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mananton <telesmanuel@hotmail.com>         +#+  +:+       +#+         #
+#    By: manuel <manuel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/29 13:22:44 by mananton          #+#    #+#              #
-#    Updated: 2025/03/31 11:47:57 by mananton         ###   ########.fr        #
+#    Updated: 2025/05/07 10:08:36 by manuel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ FTSTR_DIR		=	$(SRC_DIR)ft_str/ft_split.c \
 					$(SRC_DIR)ft_str/ft_strnstr.c \
 					$(SRC_DIR)ft_str/ft_strrchr.c \
 					$(SRC_DIR)ft_str/ft_strtrim.c \
+					$(SRC_DIR)ft_str/ft_strjoin_free.c \
 					$(SRC_DIR)ft_str/ft_substr.c
 
 FTLST_DIR		=	$(SRC_DIR)ft_lst/ft_lstadd_back.c \
@@ -84,10 +85,13 @@ FTPRINTF_DIR	=	$(SRC_DIR)ft_printf/ft_printf.c \
 					$(SRC_DIR)ft_printf/ft_hex.c \
 					$(SRC_DIR)ft_printf/ft_percent.c \
 					$(SRC_DIR)ft_printf/ft_printf_utils.c
+
+GNL_DIR			=	$(SRC_DIR)get_next_line/get_next_line.c \
+					$(SRC_DIR)get_next_line/get_next_line_utils.c \
 					
 
 # Concatenate all source files
-SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR)
+SRC 			= $(FTIS_DIR) $(FTMEM_DIR) $(FTPUT_DIR) $(FTTO_DIR) $(FTTO_DIR) $(FTSTR_DIR) $(FTLST_DIR) $(FTPRINTF_DIR) $(GNL_DIR)
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ 			= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRC))

@@ -52,7 +52,7 @@ typedef struct s_game
 } t_game;
 
 // Utility functions
-void    exit_error(char *message);
+void exit_error(const char *format, ...) __attribute__((format(printf, 1, 2)));
 int     clean_exit(t_game *game);
 void    read_map(t_game *game, char *file);
 void    validate_map(t_game *game);
@@ -67,5 +67,7 @@ void    render_map(t_game *game);
 void    update_counter(t_game *game);
 void    free_map(char **map, int height);
 void    load_textures(t_game *game);
+void    print_map_visual(t_game *game);
+void    print_map_raw(char **map);
 
 #endif

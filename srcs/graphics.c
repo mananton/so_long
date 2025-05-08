@@ -1,23 +1,28 @@
 #include "so_long.h"
 #include "libft.h"
+#include <stdio.h>
 
 void load_textures(t_game *game)
 {
+    char *paths[5] = {
+        "assets/grass.xpm",
+        "assets/wall.xpm",
+        "assets/player.xpm",
+        "assets/ball.xpm",
+        "assets/goal.xpm"
+    };
     int width;
     int height;
-    int i;
-    
-    game->textures[0] = mlx_xpm_file_to_image(game->mlx, "assets/grass.xpm", &width, &height);
-    game->textures[1] = mlx_xpm_file_to_image(game->mlx, "assets/wall.xpm", &width, &height);
-    game->textures[2] = mlx_xpm_file_to_image(game->mlx, "assets/player.xpm", &width, &height);
-    game->textures[3] = mlx_xpm_file_to_image(game->mlx, "assets/ball.xpm", &width, &height);
-    game->textures[4] = mlx_xpm_file_to_image(game->mlx, "assets/goal.xpm", &width, &height);
-    
-    i = 0;
+    int i = 0;
+
     while (i < 5)
     {
-        if (!game->textures[i])
-            exit_error("Error: Failed to load texture\n");
+        game->textures[i] = mlx_xpm_file_to_image(game->mlx, paths[i], &width, &height);
+        if (!game->textures[i] || width != TILE_SIZE || height != TILE_SIZE)
+        {
+            printf("Error: Failed to load %s\n", paths[i]);
+            clean_exit(game);
+        }
         i++;
     }
 }
