@@ -33,7 +33,7 @@ int	has_only_valid_characters(t_game *game)
 			c = game->map[i][j];
 			if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
 			{
-				printf("Caracter inválido: '%c' (int: %d) na linha %d, coluna %d\n", c, (int)c, i, j);
+				printf("Error\nCaracter inválido: '%c' (int: %d) na linha %d, coluna %d\n", c, (int)c, i, j);
 				return (0);
 			}
 			j++;

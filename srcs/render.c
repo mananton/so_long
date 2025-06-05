@@ -20,7 +20,6 @@ void	load_images(t_game *game)
     game->img_player = mlx_xpm_file_to_image(game->mlx, "images/player.xpm", &game->tile_size, &game->tile_size);
     game->img_exit = mlx_xpm_file_to_image(game->mlx, "images/exit.xpm", &game->tile_size, &game->tile_size);
 
-	// Adiciona as outras imagens que fores criar
 }
 
 void	render_map(t_game *game)

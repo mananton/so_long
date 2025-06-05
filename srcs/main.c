@@ -1,4 +1,4 @@
-#include "../includes/so_long.h"
+#include "so_long.h"
 #include <stdio.h>
 
 int	main(int argc, char **argv)
@@ -11,10 +11,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	if (parse_map(argv[1], &game) != 0)
-	{
-		write(2, "Error\nFailed to parse map\n", 26);
 		return (1);
-	}
 	if (!validate_map(&game))
 	{
 		free_map(game.map, game.height);

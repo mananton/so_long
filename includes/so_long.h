@@ -62,8 +62,12 @@ int	exit_game(t_game *game);
 // Funções de movimentação
 int	can_move_to(t_game *game, int x, int y);
 void	move_player(t_game *game, int dx, int dy);
+// Funções de contagem de elementos
+int count_collectibles(t_game *game);
+int is_map_solvable(t_game *game);
+char **copy_map(char **map, int width, int height);
+void flood_fill(char **map, int x, int y, int width, int height);
 
-// Funções de utilidade geral
 
 
 

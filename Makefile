@@ -1,6 +1,6 @@
 NAME = so_long
 
-SRCS = srcs/main.c srcs/utils.c srcs/map.c srcs/gnl.c srcs/gnl_utils.c srcs/is_valid.c srcs/render.c srcs/exit.c srcs/input.c #srcs/input.c
+SRCS = srcs/main.c srcs/utils.c srcs/map.c srcs/gnl.c srcs/gnl_utils.c srcs/is_valid.c srcs/render.c srcs/exit.c srcs/input.c srcs/validate.c
 OBJS = $(SRCS:.c=.o)
 CC = gcc
 MLX = -Lminilibx-linux -lmlx -lXext -lX11

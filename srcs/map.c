@@ -105,13 +105,19 @@ int	parse_map(const char *filename, t_game *game)
 		return (1);
 	if (find_player_position(game) != 0)
 	{
-		write(2, "Erro: jogador não encontrado!\n", 30);
+		write(2, "Error\nJogador não encontrado!\n", 30);
 		return (1);
 	}
 	if (!count_collectibles(game))
 	{
-    	write(2, "Erro: nenhum colecionável no mapa!\n", 35);
+    	write(2, "Error\nNenhum colecionável no mapa!\n", 35);
     	return (1);
 	}
+	if (!is_map_solvable(game))
+	{
+	    write(2, "Error\nNão existe caminho para todos os colecionáveis e saída!\n", 61);
+	    return (1);
+	}
+
 	return (0);
 }
