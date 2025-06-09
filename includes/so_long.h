@@ -25,6 +25,7 @@ typedef struct s_game
     void    *img_floor;
     void    *img_ball;
     void    *img_exit;
+    int     on_exit;
 }   t_game;
 
 // Funções de parsing e validação do mapa

@@ -20,28 +20,24 @@ void	move_player(t_game *game, int dx, int dy)
 
 	target = game->map[new_y][new_x];
 
-	// Apanhar colecionável
+	if (target == 'E' && game->collectibles == 0)
+	{
+		printf("Parabéns! Venceste o jogo em %d movimentos!\n", game->moves + 1);
+		exit_game(game);
+	}
+	else if (target == 'E')
+		printf("Ainda faltam colecionáveis!\n");
+
 	if (target == 'C')
 		game->collectibles--;
 
-	// Verifica se está na saída
-	if (target == 'E')
-	{
-		if (game->collectibles == 0)
-		{
-			printf("Parabéns! Venceste o jogo em %d movimentos!\n", game->moves + 1);
-			exit_game(game);
-		}
-		else
-		{
-			printf("Ainda faltam colecionáveis!\n");
-			return;
-		}
-	}
+	// Restaura a tile anterior
+	if (game->on_exit)
+		game->map[game->player_y][game->player_x] = 'E';
+	else
+		game->map[game->player_y][game->player_x] = '0';
 
-	// Atualiza mapa: remove jogador da posição anterior
-	game->map[game->player_y][game->player_x] = '0';
-	// Atualiza posição
+	game->on_exit = (target == 'E') ? 1 : 0;
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->map[new_y][new_x] = 'P';
@@ -50,6 +46,7 @@ void	move_player(t_game *game, int dx, int dy)
 
 	render_map(game);
 }
+
 
 
 // Handler de teclas

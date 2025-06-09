@@ -101,6 +101,9 @@ int	parse_map(const char *filename, t_game *game)
 	game->player_x = -1;
 	game->player_y = -1;
 	game->moves = 0;
+	game->on_exit = 0;
+
+	
 	if (alloc_and_read_map(filename, game) != 0)
 		return (1);
 	if (find_player_position(game) != 0)
