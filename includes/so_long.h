@@ -47,6 +47,7 @@ typedef struct s_game
     int     balls_count;
     int     player_x;
     int     player_y;
+    char    player_prev_tile;
     void    *textures[5];  // 0:grass, 1:wall, 2:player, 3:ball, 4:goal
     int     moves;
 } t_game;
