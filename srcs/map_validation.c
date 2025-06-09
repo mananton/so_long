@@ -79,6 +79,7 @@ void    count_elements(t_game *game)
                 game->player_count++;
                 game->player_x = x;  // Save for football player sprite
                 game->player_y = y;
+                game->player_prev_tile = EMPTY;
             }
             else if (game->map[y][x] == EXIT)
                 game->exit_count++;
