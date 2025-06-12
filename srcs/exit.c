@@ -16,6 +16,12 @@ int	exit_game(t_game *game)
 		mlx_destroy_window(game->mlx, game->win);
 	if (game->map)
 		free_map(game->map, game->height);
+	if (game->mlx)
+		mlx_destroy_display(game->mlx);
+	if (game->mlx)
+		free(game->mlx);
+	if (game)
+		free(game);
 	exit(0);
 	return (0);
 }

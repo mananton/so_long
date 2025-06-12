@@ -2,14 +2,17 @@
 
 void	init_window(t_game *game)
 {
+	int w;
+	int h;
+
 	game->tile_size = 32;
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		return ;
+	w = game->width * game->tile_size;
+	h = game->height * game->tile_size;
 	game->win = mlx_new_window(game->mlx,
-		game->width * game->tile_size,
-		game->height * game->tile_size,
-		"so_long");
+		w, h, "so_long");
 }
 
 void	load_images(t_game *game)

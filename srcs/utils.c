@@ -13,10 +13,12 @@ void free_map(char **map, int height)
         return;
     while (i < height)
     {
-        free(map[i]);
+        if (map[i])
+            free(map[i]);
         i++;
     }
-    free(map);
+    if (map)
+        free(map);
 }
 int ft_strlen(const char *str)
 {

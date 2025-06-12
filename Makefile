@@ -4,7 +4,7 @@ SRCS = srcs/main.c srcs/utils.c srcs/map.c srcs/gnl.c srcs/gnl_utils.c srcs/is_v
 OBJS = $(SRCS:.c=.o)
 CC = gcc
 MLX = -Lminilibx-linux -lmlx -lXext -lX11
-CFLAGS = -Wall -Wextra -Werror -Iincludes -Iminilibx-linux
+CFLAGS = -Wall -Wextra -Werror -g -Iincludes -Iminilibx-linux
 
 
 all: $(NAME)
